@@ -1,0 +1,14 @@
+Makefile.in
+aclocal.m4
+autom4te.cache/
+configure
+doodles/Makefile.in
+src/Makefile.in
+tags
+cfg/compile
+cfg/config.guess
+cfg/config.h.in
+cfg/config.sub
+cfg/depcomp
+cfg/install-sh
+cfg/missing

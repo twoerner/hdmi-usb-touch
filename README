@@ -1,0 +1,18 @@
+HDMI-USB-touch
+^^^^^^^^^^^^^^
+
+Jan 2016
+Trevor Woerner <twoerner@gmail.com>
+
+A user-space "driver" for a touchscreen device that has an HDMI input and a
+separate USB connection for the touch events.
+
+When the USB is plugged in, Linux reports:
+
+	hid-generic 0003:0EEF:0005.0004: hiddev0,hidraw2: USB HID v1.10 Device [RPI_TOUCH By ZH851] on usb-0000:00:14.0-2/input0
+
+The code uses libudev0 to detect the touchscreen device and find from where
+its events can be read (hidraw). It creates a virtual input device (uinput,
+this is from the point of view of the kernel). It then spends the rest of its
+time reading touch events from the hidraw device, converting and pushing them
+to the kernel via the virtual uinput device it created earlier.
